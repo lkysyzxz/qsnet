@@ -1,8 +1,8 @@
 package main
 
 import (
-	"projects/qsnet/sys"
-	"projects/qsnet/logger"
+	"./sys"
+	"./logger"
 )
 
 func main(){

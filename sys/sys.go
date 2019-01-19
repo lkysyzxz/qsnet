@@ -5,7 +5,7 @@ import (
 	"sync"
 	"os/signal"
 	"syscall"
-	"projects/qsnet/logger"
+	"../logger"
 )
 
 var signal_exit chan os.Signal
