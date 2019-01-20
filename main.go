@@ -1,20 +1,14 @@
 package main
 
 import (
-	"./logger"
+	"./qsnet"
 	"./sys"
-	"./util"
-	"fmt"
 )
 
 func main(){
-	set := util.NewSet()
-	set.Add(1)
-	set.Add(2)
-	set.Add(3)
-	set.Add(4)
-	fmt.Println(set.Contains(4))
+	acceptor := qsnet.NewAcceptor()
+	acceptor.Start("0.0.0.0:8802")
 	sys.DelayExit(func() {
-		logger.Info("Hook")
+		acceptor.Close()
 	})
 }
