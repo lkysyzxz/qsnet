@@ -33,7 +33,7 @@ func(self *QSet)Remove(elem interface{}){
 func(self *QSet)Clear(){
 	self.Lock()
 	defer self.Unlock()
-	*self = NewSet()
+	self.mp = make(map[interface{}]struct{})
 }
 
 func(self *QSet)Range(f func(interface{})){
