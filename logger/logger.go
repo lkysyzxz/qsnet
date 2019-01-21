@@ -7,7 +7,7 @@ func Info(v string){
 }
 
 func Fatal(v string){
-	log.Fatalln("[ERROR]:",v)
+	log.Println("[ERROR]:",v)
 }
 
 type Logger interface{

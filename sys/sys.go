@@ -35,9 +35,9 @@ func DelayExit(decompose func()){
 		decompose()
 	}
 
-	logger.Info("Start wait")
+	// logger.Info("Start wait")
 	goroutines_group.Wait()
-	logger.Info("Wait done")
+	// logger.Info("Wait done")
 	os.Exit(0)
 }
 

@@ -1,14 +1,18 @@
 package main
 
 import (
-	"./qsnet"
 	"./sys"
+	"./qsnet"
+	. "./userdefine"
 )
 
 func main(){
-	acceptor := qsnet.NewAcceptor()
-	acceptor.Start("0.0.0.0:8802")
+	peer := qsnet.NewTCPPeer("0.0.0.0:8802")
+	proc := NewMessageProcessor()
+	peer.Start(proc)
+
 	sys.DelayExit(func() {
-		acceptor.Close()
+		peer.Close()
+		proc.Close()
 	})
 }
