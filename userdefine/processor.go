@@ -2,6 +2,7 @@ package userdefine
 
 import "../qsnet"
 import "../logger"
+import "../sys"
 
 const(
 	PIPE_SIZE = 2048
@@ -22,16 +23,18 @@ func (self *MessageProcessor)OnMessageEvent(msg qsnet.MessageEvent){
 }
 
 func (self *MessageProcessor)StartLoop(){
-	for{
-		select {
+	sys.StartGoroutines(func() {
+		for{
+			select {
 			case <-self.close:
 				return
 			case msg := <-self.pipe:
 				logger.Info("Read:"+string(msg.Buf)+". From:"+msg.Session.RemoteAddr())
 				msg.Session.Send(msg.Buf)
+			}
 		}
-	}
-	close(self.pipe)
+		close(self.pipe)
+	})
 }
 
 func (self *MessageProcessor)Close(){

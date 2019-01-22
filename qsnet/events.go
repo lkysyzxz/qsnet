@@ -1,10 +1,10 @@
 package qsnet
 
 type MessageEvent struct {
-	Session *Session
+	Session Session
 	Buf []byte
 }
 
 type CloseEvent struct{
-	Session *Session
+	Session Session
 }
