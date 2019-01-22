@@ -38,6 +38,10 @@ func (self *TCPConnector)OnClose(session Session){
 	self.Stop()
 }
 
+func (self *TCPConnector)Send(buf []byte){
+	self.session.Send(buf)
+}
+
 func NewTCPConnector(addr string)*TCPConnector{
 	return &TCPConnector{addr:addr}
 }

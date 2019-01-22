@@ -18,7 +18,7 @@ func main(){
 	// connector.Start()
 
 	sys.DelayExit(func() {
-		connector.Stop()
+		// connector.Stop()
 		peer.Stop()
 		proc.Close()
 		// proc.Close()
