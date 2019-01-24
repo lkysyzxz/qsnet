@@ -13,14 +13,8 @@ func main(){
 	peer.Start()
 	proc.StartLoop()
 
-	// connector := qsnet.NewTCPConnector("127.0.0.1:8802")
-	// qsnet.BindProcessor(connector,proc)
-	// connector.Start()
-
 	sys.DelayExit(func() {
-		// connector.Stop()
 		peer.Stop()
 		proc.Close()
-		// proc.Close()
 	})
 }

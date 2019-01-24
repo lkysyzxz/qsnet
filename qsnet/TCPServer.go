@@ -15,9 +15,7 @@ func (self *TCPServer)onAccept(conn net.Conn){
 	s := NewTCPSession(self,self.processor,conn)
 	self.sessionManager.AddSession(s)
 	logger.Info("ACCEPT:"+conn.RemoteAddr().String())
-	sys.StartGoroutines(func() {
-		s.StartRead()
-	})
+	s.Start()
 }
 
 func (self *TCPServer)OnClose(session Session){

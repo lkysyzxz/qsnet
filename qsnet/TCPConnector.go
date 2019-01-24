@@ -2,7 +2,6 @@ package qsnet
 
 import "net"
 import "../logger"
-import "../sys"
 
 type TCPConnector struct{
 	session Session
@@ -18,9 +17,7 @@ func (self *TCPConnector)Start()Peer{
 	}
 	self.session = NewTCPSession(self,self.processor,conn)
 
-	sys.StartGoroutines(func() {
-		self.session.StartRead()
-	})
+	self.session.Start()
 	return self
 }
 
